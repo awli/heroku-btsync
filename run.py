@@ -3,8 +3,10 @@ from subprocess import call
 
 # call(["mkdir /app/.sync"])
 # call(["mkdir -p /tmp/data"])
+# apparently heroku doens't like call...
+call("mkdir .sync")
+call("mkdir -p /tmp/data")
 
-call("./prep_files.sh")
 secret = str(os.environ.get('SYNC_SECRET'))
 
 CONFIG_SKELETON = """
@@ -27,7 +29,7 @@ CONFIG_SKELETON = """
   [
     {
       "secret" : "%s",
-      "dir" : "tmp/data", 
+      "dir" : "/tmp/data", 
       "use_relay_server" : true,
       "use_tracker" : true,
       "use_dht" : true,
