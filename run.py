@@ -48,5 +48,5 @@ CONFIG_SKELETON = """
 f = open('config', 'w')
 f.write(CONFIG_SKELETON)
 
-os.system("./btsync --config ./config")
+os.system("./btsync --config ./config --nodaemon")
 # call(["./btsync", "--config", "./config"])
