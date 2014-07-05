@@ -47,6 +47,7 @@ CONFIG_SKELETON = """
 
 f = open('config', 'w')
 f.write(CONFIG_SKELETON)
+f.close()
 
 os.system('cat config')
 
