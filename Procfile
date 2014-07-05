@@ -1,1 +1,1 @@
-web: python run.py
+sync: python run.py

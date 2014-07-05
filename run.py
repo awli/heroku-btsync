@@ -1,6 +1,7 @@
 import os
 from subprocess import call
-call(["mkdir -p /tmp/data"])
+call(["mkdir .sync"])
+call(["mkdir -p tmp/data"])
 
 secret = str(os.environ.get('SYNC_SECRET'))
 
@@ -8,7 +9,7 @@ CONFIG_SKELETON = """
 {
   "device_name": "mirror",
   "listening_port" : 0,                       // 0 - randomize port
-  "storage_path" : "/home/user/.sync",
+  "storage_path" : ".sync",
   "check_for_updates" : false, 
   "use_upnp" : false, 
   "download_limit" : 0,
@@ -24,7 +25,7 @@ CONFIG_SKELETON = """
   [
     {
       "secret" : "%s",
-      "dir" : "/tmp/data", 
+      "dir" : "tmp/data", 
       "use_relay_server" : true,
       "use_tracker" : true,
       "use_dht" : true,
