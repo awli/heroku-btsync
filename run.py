@@ -4,7 +4,7 @@ from subprocess import call
 # call(["mkdir /app/.sync"])
 # call(["mkdir -p /tmp/data"])
 # apparently heroku doens't like call...
-os.system("mkdir .sync")
+os.system("mkdir -p /tmp/.sync")
 os.system("mkdir -p /tmp/data")
 
 secret = str(os.environ.get('SYNC_SECRET'))
@@ -13,7 +13,7 @@ CONFIG_SKELETON = """
 {
   "device_name": "mirror",
   "listening_port" : 0,                       // 0 - randomize port
-  "storage_path" : ".sync",
+  "storage_path" : "/tmp/.sync",
   "check_for_updates" : false, 
   "use_upnp" : false, 
   "download_limit" : 0,
@@ -48,5 +48,5 @@ CONFIG_SKELETON = """
 f = open('config', 'w')
 f.write(CONFIG_SKELETON)
 
-os.system("./btsync --config ./config --nodaemon")
+os.system("./btsync --nodaemon --config ./config")
 # call(["./btsync", "--config", "./config"])
