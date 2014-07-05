@@ -18,13 +18,6 @@ CONFIG_SKELETON = """
   "use_upnp" : false, 
   "download_limit" : 0,
   "upload_limit" : 0,
-  "webui" : // this is disabled
-    {
-      //"listen" : "0.0.0.0:8888",
-      //"login" : "admin",
-      //"password" : "password"
-    }
-  ,
   "shared_folders" :
   [
     {
@@ -36,10 +29,6 @@ CONFIG_SKELETON = """
       "search_lan" : false,
       "use_sync_trash" : true,
       "overwrite_changes" : false,
-      "known_hosts" :
-      [
-        //"192.168.1.2:44444"
-      ]
     }
   ]
 }
