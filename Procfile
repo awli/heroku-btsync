@@ -1,0 +1,1 @@
+sync: python run.py
