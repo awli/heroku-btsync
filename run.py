@@ -7,7 +7,7 @@ from subprocess import call
 os.system("mkdir .sync")
 os.system("mkdir -p /tmp/data")
 
-secret = str(os.environ('SYNC_SECRET'))
+secret = str(os.environ.get('SYNC_SECRET'))
 
 CONFIG_SKELETON = """
 {
