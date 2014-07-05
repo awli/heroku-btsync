@@ -1,7 +1,7 @@
 import os
 from subprocess import call
-call(["mkdir .sync"])
-call(["mkdir -p tmp/data"])
+call(["mkdir /app/.sync"])
+call(["mkdir -p /tmp/data"])
 
 secret = str(os.environ.get('SYNC_SECRET'))
 
