@@ -1,8 +1,10 @@
 import os
 from subprocess import call
-call(["mkdir /app/.sync"])
-call(["mkdir -p /tmp/data"])
 
+# call(["mkdir /app/.sync"])
+# call(["mkdir -p /tmp/data"])
+
+call("./prep_files.sh")
 secret = str(os.environ.get('SYNC_SECRET'))
 
 CONFIG_SKELETON = """
