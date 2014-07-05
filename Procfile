@@ -1,1 +1,1 @@
-web: sh /app/run.sh
+sync: sh /app/run.sh
