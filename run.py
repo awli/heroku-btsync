@@ -1,5 +1,2 @@
-import os
-# from subprocess import call
-# call(["./btsync"])
-
-os.system("./btsync")
+from subprocess import call
+call("./btsync")
