@@ -28,7 +28,7 @@ CONFIG_SKELETON = """
       "use_dht" : true,
       "search_lan" : false,
       "use_sync_trash" : true,
-      "overwrite_changes" : false,
+      "overwrite_changes" : false
     }
   ]
 }
