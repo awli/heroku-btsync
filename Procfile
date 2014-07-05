@@ -1,1 +1,1 @@
-sync: sh /app/run.sh
+web: python run.py
