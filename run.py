@@ -11,18 +11,18 @@ secret = str(os.environ.get('SYNC_SECRET'))
 
 CONFIG_SKELETON = """
 {
-  "device_name": "mirror",
+  "device_name": "filemirror",
   "listening_port" : 0,                       // 0 - randomize port
   "storage_path" : "/tmp/.sync",
-  "check_for_updates" : false, 
-  "use_upnp" : false, 
+  "check_for_updates" : false,
+  "use_upnp" : false,
   "download_limit" : 0,
   "upload_limit" : 0,
   "shared_folders" :
   [
     {
       "secret" : "%s",
-      "dir" : "/tmp/data", 
+      "dir" : "/tmp/data",
       "use_relay_server" : true,
       "use_tracker" : true,
       "use_dht" : true,
