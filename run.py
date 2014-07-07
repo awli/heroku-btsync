@@ -5,7 +5,7 @@ import os
 
 if __name__ == '__main__':
   os.system("mkdir -p /tmp/.sync")
-  os.system("mkdir -p /tmp/data")
+  os.system("mkdir -p /tmp/data/0")
 
   secret = str(os.environ.get('SYNC_SECRET'))
 

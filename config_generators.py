@@ -1,42 +1,41 @@
-CONFIG_PROTOTYPE = """
-{
-  "device_name": "filemirror",
-  "listening_port" : 0,                       // 0 - randomize port
-  "storage_path" : "/tmp/.sync",
-  "check_for_updates" : false,
-  "use_upnp" : false,
-  "download_limit" : 0,
-  "upload_limit" : 0,
-  "shared_folders" :
-  [
-    {
-      "secret" : "%s",
-      "dir" : "/tmp/data",
-      "use_relay_server" : true,
-      "use_tracker" : true,
-      "use_dht" : true,
-      "search_lan" : false,
-      "use_sync_trash" : true,
-      "overwrite_changes" : false
-    }
-  ]
-}
-"""
-
-def generate_config(secret):
-  return CONFIG_PROTOTYPE % secret
+import json
 
 class SyncConfig(object):
 
-  def __init__(self, name = "heroku-btsync", secret = None):
+  def __init__(self, name = 'heroku-btsync', secret = None):
     self.name = name
+    self.options = {
+      "listening_port" : 0,
+      "storage_path" : "/tmp/.sync",
+      "check_for_updates" : False,
+      "use_upnp" : False,
+      "download_limit" : 0,
+      "upload_limit" : 0,
+    }
     self.secrets = []
     if secret:
-      assert isinstance(secret, str)
       self.add_secret(secret)
 
   def add_secret(self, secret):
     self.secrets.append(secret)
 
+  def generate_shared_folders(self):
+    ans = []
+    for index, secret in enumerate(self.secrets):
+      ans.append({
+        'secret' : secret, 
+        "dir" : "/tmp/data/%d" % index,
+        "use_relay_server" : True,
+        "use_tracker" : True,
+        "use_dht" : True,
+        "search_lan" : False,
+        "use_sync_trash" : True,
+        "overwrite_changes" : False
+        })
+    return ans
+
   def generate_file(self):
-    return generate_config(self.secrets[0])
+    config = self.options.copy()
+    config['device_name'] = self.name
+    config['shared_folders'] = self.generate_shared_folders()
+    return json.dumps(config)
