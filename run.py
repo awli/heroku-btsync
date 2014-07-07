@@ -9,8 +9,9 @@ if __name__ == '__main__':
 
   secret = str(os.environ.get('SYNC_SECRET'))
 
+  config = SyncConfig(secret = secret)
   f = open('config', 'w')
-  f.write(generate_config(secret))
+  f.write(config.generate_file())
   f.close()
 
   os.system("./btsync --nodaemon --config config")

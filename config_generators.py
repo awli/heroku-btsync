@@ -25,3 +25,18 @@ CONFIG_PROTOTYPE = """
 
 def generate_config(secret):
   return CONFIG_PROTOTYPE % secret
+
+class SyncConfig(object):
+
+  def __init__(self, name = "heroku-btsync", secret = None):
+    self.name = name
+    self.secrets = []
+    if secret:
+      assert isinstance(secret, str)
+      self.add_secret(secret)
+
+  def add_secret(self, secret):
+    self.secrets.append(secret)
+
+  def generate_file(self):
+    return generate_config(self.secrets[0])
