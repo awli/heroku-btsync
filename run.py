@@ -4,14 +4,13 @@ import os
 # from subprocess import call
 
 if __name__ == '__main__':
-  os.system("mkdir -p /tmp/.sync")
-  os.system("mkdir -p /tmp/data/0")
-
   secret = str(os.environ.get('SYNC_SECRET'))
-
   config = SyncConfig(secret = secret)
   f = open('config', 'w')
   f.write(config.generate_file())
   f.close()
+
+  for folder in config.used_folders():
+    os.system("mkdir -p %s" % folder) 
 
   os.system("./btsync --nodaemon --config config")

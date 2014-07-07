@@ -19,6 +19,12 @@ class SyncConfig(object):
   def add_secret(self, secret):
     self.secrets.append(secret)
 
+  def used_folders(self):
+    ans = ["/tmp/.sync"]
+    for i in xrange(len(self.secrets)):
+      ans.append("/tmp/data/%d" % i)
+    return ans
+
   def generate_shared_folders(self):
     ans = []
     for index, secret in enumerate(self.secrets):
