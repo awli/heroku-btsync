@@ -1,9 +1,7 @@
 import os
-from subprocess import call
+# don't use subprocess because heroku doesn't like it
+# from subprocess import call
 
-# call(["mkdir /app/.sync"])
-# call(["mkdir -p /tmp/data"])
-# apparently heroku doens't like call...
 os.system("mkdir -p /tmp/.sync")
 os.system("mkdir -p /tmp/data")
 
@@ -38,7 +36,4 @@ f = open('config', 'w')
 f.write(CONFIG_SKELETON)
 f.close()
 
-os.system('cat config')
-
 os.system("./btsync --nodaemon --config config")
-# call(["./btsync", "--config", "./config"])
